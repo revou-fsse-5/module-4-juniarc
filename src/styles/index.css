@@ -8,6 +8,18 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+.css-1hv8oq8-MuiStepLabel-label.Mui-active {
+    @apply text-white font-primary text-base !important
+}
+
+.css-1hv8oq8-MuiStepLabel-label {
+    @apply text-gray-500 font-primary text-base !important
+}
+
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
+    @apply text-green-light !important
+}
+
 .ReactModal__Overlay {
     background-color: rgba(0, 0, 0, 0.75) !important;
     transition: opacity 0.3s ease !important;
