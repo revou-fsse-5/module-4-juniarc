@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import { LoginFormValues } from '../types/authTypes';
 import SigninForm from '../components/auth/SigninForm';
 import PublicLayout from '../components/layout/PublicLayout';
@@ -9,10 +10,12 @@ import ErrorModal from '../components/modals/ErrorModal';
 
 function SigninPage() {
   const SIGNIN_PAGE = 'signin-page';
-
+  const COOKIE_DURATION_7_DAYS = 604800;
+  
+  const [cookies, setCookie, removeCookie] = useCookies(['authToken']);
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const { setAccessToken } = useAuthContext();
+  const { accessToken, setAccessToken } = useAuthContext();
   const navigate = useNavigate();
 
   const setAuthUser = async ({ email, password }: LoginFormValues) => {
@@ -20,7 +23,10 @@ function SigninPage() {
       const token = await api.login({ email, password });
       api.putAccessToken(token);
       setAccessToken(token);
+
       navigate('/');
+
+      return token;
     } catch (error) {
       setErrorModalOpen(true);
       if (error instanceof Error) {
@@ -31,9 +37,17 @@ function SigninPage() {
       console.log(error);
     }
   };
-  const handleSubmit = (values: any) => {
-    setAuthUser(values);
+  const handleSubmit = (values: LoginFormValues) => {
+    setAuthUser(values)
+      .then(token => {
+        if(values.rememberMe) {
+          setCookie('authToken', token, { path: '/', maxAge: COOKIE_DURATION_7_DAYS });
+        } else {
+          removeCookie('authToken', { path: '/'})
+        }
+      })
   };
+
 
   return (
     <PublicLayout>

@@ -8,6 +8,7 @@ function SigninForm({ handleSubmit }: LoginFormProps) {
   const initialValues: LoginFormValues = {
     email: '',
     password: '',
+    rememberMe: false
   };
 
   const validationSchema = Yup.object({
@@ -63,7 +64,7 @@ function SigninForm({ handleSubmit }: LoginFormProps) {
               <ErrorMessage name="password" />
             </p>
           </div>
-          {/* <div className="flex items-center mb-4">
+          <div className="flex items-center mb-4">
           <Field
             name="rememberMe"
             type="checkbox"
@@ -73,7 +74,7 @@ function SigninForm({ handleSubmit }: LoginFormProps) {
           <label htmlFor="rememberMe" className="text-white">
             Remember Me
           </label>
-        </div> */}
+        </div>
           <div className="w-full flex justify-between gap-10 mt-3 items-center">
             <p className="text-white">
               Don't have an account ?{' '}

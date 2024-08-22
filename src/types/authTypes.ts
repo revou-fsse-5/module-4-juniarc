@@ -69,6 +69,7 @@ interface SignupModalProps {
 interface LoginFormValues {
   email: string;
   password: string;
+  rememberMe: boolean;
 }
 
 interface LoginFormProps {
