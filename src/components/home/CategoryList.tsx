@@ -1,5 +1,6 @@
 import React from 'react';
-import CategoryItem, {CategoryItemType} from './CategoryItem';
+import CategoryItem from './CategoryItem';
+import { CategoryItemType } from './types';
 
 interface CategoryListPropsType {
     categories: CategoryItemType[],

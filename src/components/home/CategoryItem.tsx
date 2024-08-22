@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
+import { CategoryItemType } from './types';
 import ItemButtons from './ItemButtons';
-
-export interface CategoryItemType {
-  id: number;
-  name: string;
-  description: string;
-}
 
 interface CategoryItemPropsType {
   id: number;

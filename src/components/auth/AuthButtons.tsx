@@ -1,7 +1,6 @@
 import React from 'react';
-import { FormValues } from '../../types/authTypes';
 
-interface AuthButtonsProps {
+interface AuthButtonsPropsType {
   activeStep: number;
   handleBack: () => void;
   handleNext: (values: any) => void;
@@ -15,7 +14,7 @@ function AuthButtons({
   handleNext,
   handleSubmit,
   steps,
-}: AuthButtonsProps) {
+}: AuthButtonsPropsType ) {
   return (
     <div className='w-full flex justify-end gap-10 mt-10'>
       <button disabled={activeStep === 0} onClick={handleBack} className={`py-4 px-10 rounded-md ${activeStep === 0 ? 'text-gray-600 pointer-events-none'  : 'text-white hover:bg-gray-700 transition-all'}`}>

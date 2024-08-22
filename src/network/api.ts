@@ -1,11 +1,7 @@
-import { FormValues, LoginFormValues } from '../types/authTypes';
-import { AddCategoryFormValues } from '../components/home/AddCategoryForm';
-import { CategoryItemType } from '../components/home/CategoryItem';
-
-interface loginType {
-  email: string;
-  password: string;
-}
+import { LoginType } from './types';
+import { AddCategoryFormValues } from '../components/home/types';
+import { CategoryItemType } from '../components/home/types';
+import { FormValues } from '../components/auth/types';
 
 const api = (() => {
   const BASE_URL = 'http://localhost:8080';
@@ -62,7 +58,7 @@ const api = (() => {
     return user;
   }
 
-  async function login({ email, password } : loginType) {
+  async function login({ email, password } : LoginType) {
     const response = await fetch(`${BASE_URL}/login`, {
       method: 'POST',
       headers: {

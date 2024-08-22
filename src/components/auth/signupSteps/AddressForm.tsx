@@ -1,14 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AddressFormProps } from '../../../types/authTypes';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { AddressFormValues } from '../types';
+
+interface AddressFormPropsType {
+  initialValues: AddressFormValues;
+  onSubmit: (values: AddressFormValues) => void;
+  handleBack: () => void;
+}
 
 function AddressForm({
   initialValues,
   onSubmit,
   handleBack,
-}: AddressFormProps) {
+}: AddressFormPropsType) {
   const validationSchema = Yup.object({
     street: Yup.string().required('Street is required'),
     state: Yup.string().required('State is required'),

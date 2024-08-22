@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaPen, FaTrashAlt, FaCheck, FaTimes } from 'react-icons/fa';
-import { CategoryItemType } from './CategoryItem';
+import { CategoryItemType } from './types';
 import DeleteModal from '../modals/DeleteModal';
 
 interface ItemButtonsPropsType {

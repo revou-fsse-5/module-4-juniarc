@@ -1,9 +1,13 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { useNavigate } from 'react-router-dom';
-import { SignupModalProps } from '../../types/authTypes';
 
-function SignupModal({ isOpen, setIsOpen }: SignupModalProps) {
+interface SignupModalPropsType {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function SignupModal({ isOpen, setIsOpen }: SignupModalPropsType) {
   const navigate = useNavigate();
 
   const onCloseModal = () => {

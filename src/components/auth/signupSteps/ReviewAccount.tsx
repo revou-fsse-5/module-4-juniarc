@@ -1,7 +1,18 @@
 import React from 'react';
-import { ReviewAccountProps } from '../../../types/authTypes';
+import { FormValues } from '../types';
 import SignupModal from '../../modals/SignupModal';
 import ErrorModal from '../../modals/ErrorModal';
+
+interface ReviewAccountPropsType {
+  userData: FormValues;
+  handleBack: () => void;
+  onSubmit: () => void;
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isErrorModalOpen: boolean; 
+  setErrorModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  errorMessage: string
+}
 
 function ReviewAccount({
   userData,
@@ -12,7 +23,7 @@ function ReviewAccount({
   isErrorModalOpen,
   setErrorModalOpen,
   errorMessage,
-}: ReviewAccountProps) {
+}: ReviewAccountPropsType ) {
   const { fullname, email, dateOfBirth, address, username } = userData;
   return (
     <section

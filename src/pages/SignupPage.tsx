@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import api from '../network/api';
-import { FormValues } from '../types/authTypes';
+import { FormValues } from '../components/auth/types';
 import PublicLayout from '../components/layout/PublicLayout';
 import AuthStepper from '../components/auth/AuthStepper';
 import PersonalForm from '../components/auth/signupSteps/PersonalForm';

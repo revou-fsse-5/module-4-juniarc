@@ -2,9 +2,13 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
-import { LoginFormProps, LoginFormValues } from '../../types/authTypes';
+import { LoginFormValues } from './types';
 
-function SigninForm({ handleSubmit }: LoginFormProps) {
+interface LoginFormPropsType {
+  handleSubmit: (values: LoginFormValues) => void;
+}
+
+function SigninForm({ handleSubmit }: LoginFormPropsType) {
   const initialValues: LoginFormValues = {
     email: '',
     password: '',

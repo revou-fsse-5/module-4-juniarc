@@ -5,12 +5,12 @@ import StepLabel from '@mui/material/StepLabel';
 
 import '../../styles/stepper.css'
 
-interface AuthStepperProps {
+interface AuthStepperPropsType {
     activeStep: number,
     steps: string[],
 }
 
-function AuthStepper({ activeStep, steps } : AuthStepperProps){
+function AuthStepper({ activeStep, steps } : AuthStepperPropsType){
     return(
         <Stepper activeStep={activeStep}>
             {steps.map((label, index) => {

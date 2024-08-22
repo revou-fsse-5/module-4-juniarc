@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-import { LoginFormValues } from '../types/authTypes';
+import { LoginFormValues } from '../components/auth/types';
 import SigninForm from '../components/auth/SigninForm';
 import PublicLayout from '../components/layout/PublicLayout';
 import api from '../network/api';

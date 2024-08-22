@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-
-export interface AddCategoryFormValues {
-  name: string;
-  description: string;
-}
+import { AddCategoryFormValues } from './types';
 
 interface AddCategoryFromPropsType {
   addCategory: ({ name, description }: AddCategoryFormValues) => void;

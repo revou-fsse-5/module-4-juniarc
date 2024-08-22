@@ -2,7 +2,15 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
-import { AccountFormProps } from '../../../types/authTypes';
+import { AccountFormValues } from '../types';
+
+interface AccountFormPropsType {
+  onSubmit: (values: AccountFormValues) => void;
+  handleBack: () => void;
+  username: string;
+  password: string;
+  confirmPassword: string | null;
+}
 
 function AddressForm({
   username,
@@ -10,7 +18,7 @@ function AddressForm({
   confirmPassword,
   onSubmit,
   handleBack,
-}: AccountFormProps) {
+}: AccountFormPropsType ) {
   const initialValues = {
     username,
     password,

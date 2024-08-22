@@ -2,10 +2,17 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
-import { PersonalFormProps } from '../../../types/authTypes';
 import CustomDateInput from '../CustomDateInput';
+import { PersonalFormValues } from '../types';
 
-function PersonalForm({ fullname, email, dateOfBirth, onSubmit }: PersonalFormProps) {
+interface PersonalFormPropsType {
+  fullname: string;
+  email: string;
+  dateOfBirth: string;
+  onSubmit: (values: PersonalFormValues ) => void
+}
+
+function PersonalForm({ fullname, email, dateOfBirth, onSubmit }: PersonalFormPropsType ) {
   const initialValues = {
     fullname,
     email,

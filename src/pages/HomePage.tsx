@@ -2,20 +2,13 @@ import React, { useEffect, useState } from 'react';
 import AuthedLayout from '../components/layout/AuthedLayout';
 import api from '../network/api';
 import CategoryList from '../components/home/CategoryList';
-import AddCategoryForm, {
-  AddCategoryFormValues,
-} from '../components/home/AddCategoryForm';
-import { CategoryItemType } from '../components/home/CategoryItem';
+import AddCategoryForm from '../components/home/AddCategoryForm';
 import ErrorModal from '../components/modals/ErrorModal';
-
-interface CategoryType {
-  id: number;
-  name: string;
-  description: string;
-}
+import { CategoryItemType } from '../components/home/types';
+import { AddCategoryFormValues } from '../components/home/types';
 
 function HomePage() {
-  const [categories, setCategories] = useState<CategoryType[]>([]);
+  const [categories, setCategories] = useState<CategoryItemType[]>([]);
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 

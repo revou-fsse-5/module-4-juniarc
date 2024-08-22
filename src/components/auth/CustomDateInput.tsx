@@ -1,14 +1,13 @@
 import React from 'react';
 import { FaCalendar } from 'react-icons/fa';
 import { FieldProps, FormikProps } from 'formik';
-import { DateTime } from 'luxon';
 
-interface CustomDateInputProps {
+interface CustomDateInputPropsType {
     field: FieldProps['field'],
     form: FormikProps<any>
 }
 
-function CustomDateInput({ field, form } : CustomDateInputProps) {
+function CustomDateInput({ field, form } : CustomDateInputPropsType) {
     const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
         form.setFieldValue(field.name, event.target.value);
