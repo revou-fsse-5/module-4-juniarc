@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import GettingStartedPage from './pages/GettingStartedPage';
 import SignupPage from './pages/SignupPage';
 import SigninPage from './pages/SigninPage';
@@ -10,13 +11,16 @@ import { useAuthContext } from './contexts/authContext';
 
 function App() {
   const { accessToken, setAccessToken } = useAuthContext();
+  const [ cookies ] = useCookies(['authToken']);
 
   useEffect(() => {
     const token = api.getAccessToken();
-    if (token) {
+    if(cookies.authToken) {
+      setAccessToken(cookies.authToken);
+    } else if(token) {
       setAccessToken(token);
     }
-  }, [setAccessToken]);
+  }, [setAccessToken, cookies]);
 
   if (accessToken === undefined || accessToken === null) {
     return (

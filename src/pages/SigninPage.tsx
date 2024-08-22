@@ -15,7 +15,7 @@ function SigninPage() {
   const [cookies, setCookie, removeCookie] = useCookies(['authToken']);
   const [isErrorModalOpen, setErrorModalOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const { accessToken, setAccessToken } = useAuthContext();
+  const { setAccessToken } = useAuthContext();
   const navigate = useNavigate();
 
   const setAuthUser = async ({ email, password }: LoginFormValues) => {
