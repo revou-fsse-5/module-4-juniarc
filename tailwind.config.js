@@ -13,6 +13,7 @@ module.exports = {
         'green-dark': '#1B5252',
         'green-medium': '#40534C',
         'yellow-medium': '#D6BD98',
+        'red-dark': '#FA5858'
       },
       fontFamily: {
         primary: ['Poppins', 'sans-serif'],

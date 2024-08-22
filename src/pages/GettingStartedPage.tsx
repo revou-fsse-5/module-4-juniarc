@@ -15,7 +15,7 @@ function GettingStartedPage() {
         </p>
         <Link
           to="/sign-up"
-          className="w-fit bg-green-light rounded-2xl px-12 py-6 text-2xl font-secondary font-extrabold"
+          className="w-fit bg-green-light rounded-2xl px-12 py-6 text-2xl font-secondary font-extrabold hover:bg-green-dark transition-all hover:text-white"
         >
           Get Started
         </Link>

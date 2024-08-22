@@ -5,13 +5,24 @@ import { Link } from 'react-router-dom';
 import { AccountFormProps } from '../../../types/authTypes';
 
 function AddressForm({
-  initialValues,
+  username,
+  password,
+  confirmPassword,
   onSubmit,
   handleBack,
 }: AccountFormProps) {
+  const initialValues = {
+    username,
+    password,
+    confirmPassword,
+  };
   const validationSchema = Yup.object({
     username: Yup.string().required('Username is required'),
     password: Yup.string()
+      .matches(/[A-Z]/, 'Must contain at least one uppercase letter')
+      .matches(/[a-z]/, 'Must contain at least one lowercase letter')
+      .matches(/\d/, 'Must contain at least one number')
+      .matches(/[@$!%*?&#]/, 'Must contain at least one special character')
       .min(8, 'Password must be at least 6 characters long')
       .required('Password is required'),
     confirmPassword: Yup.string()

@@ -7,7 +7,9 @@ interface PersonalFormValues {
 }
 
 interface PersonalFormProps {
-  initialValues: PersonalFormValues;
+  fullname: string;
+  email: string;
+  dateOfBirth: string;
   onSubmit: (values: PersonalFormValues) => void;
 }
 
@@ -33,13 +35,19 @@ interface AccountFormValues {
 interface AccountFormProps {
   onSubmit: (values: AccountFormValues) => void;
   handleBack: () => void;
-  initialValues: AccountFormValues;
+  username: string;
+  password: string;
+  confirmPassword: string | null;
 }
 
 interface FormValues {
-  personal: PersonalFormValues;
+  fullname: string;
+  email: string;
+  dateOfBirth: string;
   address: AddressFormValues;
-  account: AccountFormValues;
+  username: string;
+  password: string;
+  confirmPassword: string | null;
 }
 
 interface ReviewAccountProps {
@@ -48,12 +56,25 @@ interface ReviewAccountProps {
   onSubmit: () => void;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isErrorModalOpen: boolean; 
+  setErrorModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  errorMessage: string
 }
 
 interface SignupModalProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+interface LoginFormValues {
+  email: string;
+  password: string;
+}
+
+interface LoginFormProps {
+  handleSubmit: (values: LoginFormValues) => void;
+}
+
 
 export type {
   PersonalFormProps,
@@ -65,4 +86,6 @@ export type {
   FormValues,
   ReviewAccountProps,
   SignupModalProps,
+  LoginFormValues,
+  LoginFormProps,
 };

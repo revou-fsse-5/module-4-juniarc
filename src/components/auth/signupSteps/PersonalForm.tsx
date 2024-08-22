@@ -5,7 +5,12 @@ import { Link } from 'react-router-dom';
 import { PersonalFormProps } from '../../../types/authTypes';
 import CustomDateInput from '../CustomDateInput';
 
-function PersonalForm({ initialValues, onSubmit }: PersonalFormProps) {
+function PersonalForm({ fullname, email, dateOfBirth, onSubmit }: PersonalFormProps) {
+  const initialValues = {
+    fullname,
+    email,
+    dateOfBirth
+  }
   const validationSchema = Yup.object({
     fullname: Yup.string().required('Full name is required'),
     email: Yup.string()

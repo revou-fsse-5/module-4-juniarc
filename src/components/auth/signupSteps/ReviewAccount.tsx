@@ -1,11 +1,24 @@
 import React from 'react';
 import { ReviewAccountProps } from '../../../types/authTypes';
 import SignupModal from '../../modals/SignupModal';
+import ErrorModal from '../../modals/ErrorModal';
 
-function ReviewAccount({ userData, handleBack, onSubmit, isOpen, setIsOpen }: ReviewAccountProps) {
-  const { personal, address, account } = userData;
+function ReviewAccount({
+  userData,
+  handleBack,
+  onSubmit,
+  isOpen,
+  setIsOpen,
+  isErrorModalOpen,
+  setErrorModalOpen,
+  errorMessage,
+}: ReviewAccountProps) {
+  const { fullname, email, dateOfBirth, address, username } = userData;
   return (
-    <section className="review-account w-full border border-solid border-white p-4 rounded-lg">
+    <section
+      className="review-account w-full border border-solid border-white p-4 rounded-lg"
+      aria-hidden="false"
+    >
       <h2 className="text-green-light font-secondary font-bold text-2xl mb-6">
         Review Your Account
       </h2>
@@ -15,18 +28,14 @@ function ReviewAccount({ userData, handleBack, onSubmit, isOpen, setIsOpen }: Re
             Full Name
           </div>
           <div className="table-cell text-left text-white pr-3"> : </div>
-          <div className="table-cell text-left text-white">
-            {personal.fullname}
-          </div>
+          <div className="table-cell text-left text-white">{fullname}</div>
         </div>
         <div className="table-row">
           <div className="table-cell text-left text-white font-semibold">
             Date of Birth
           </div>
           <div className="table-cell text-left text-white"> : </div>
-          <div className="table-cell text-left text-white">
-            {personal.dateOfBirth}
-          </div>
+          <div className="table-cell text-left text-white">{dateOfBirth}</div>
         </div>
         <div className="table-row">
           <div className="table-cell text-left text-white font-semibold border-b border-white border-solid pb-4">
@@ -37,7 +46,7 @@ function ReviewAccount({ userData, handleBack, onSubmit, isOpen, setIsOpen }: Re
             :{' '}
           </div>
           <div className="table-cell text-left text-white border-b border-white border-solid">
-            {personal.email}
+            {email}
           </div>
         </div>
         <div className="table-row">
@@ -77,7 +86,7 @@ function ReviewAccount({ userData, handleBack, onSubmit, isOpen, setIsOpen }: Re
             :{' '}
           </div>
           <div className="table-cell text-left text-white border-b border-white border-solid">
-            {account.username}
+            {username}
           </div>
         </div>
       </div>
@@ -97,7 +106,15 @@ function ReviewAccount({ userData, handleBack, onSubmit, isOpen, setIsOpen }: Re
           Sign Up
         </button>
       </div>
-      <SignupModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      {isOpen && <SignupModal isOpen={isOpen} setIsOpen={setIsOpen} />}
+      {isErrorModalOpen && (
+        <ErrorModal
+          isOpen={isErrorModalOpen}
+          setIsOpen={setErrorModalOpen}
+          parentPage="review-account"
+          errorMessage={errorMessage}
+        />
+      )}
     </section>
   );
 }

@@ -84,7 +84,7 @@ function AddressForm({
             </label>
             <Field
               name="zipCode"
-              type="number"
+              type="text"
               placeholder="Please enter your Zip Code"
               className="bg-transparent rounded-md border-solid border border-white p-3 text-sm text-white mb-2"
             />
