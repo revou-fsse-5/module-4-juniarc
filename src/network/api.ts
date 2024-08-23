@@ -7,11 +7,11 @@ const api = (() => {
   const BASE_URL = 'http://localhost:8080';
 
   function putAccessToken(token: string | null) {
-    localStorage.setItem('accessToken', token ?? '');
+    sessionStorage.setItem('accessToken', token ?? '');
   }
 
   function getAccessToken(): string | null {
-    return localStorage.getItem('accessToken') ?? '';
+    return sessionStorage.getItem('accessToken') ?? '';
   }
 
   async function _fetchWithToken(url: string, options: any = {}) {
