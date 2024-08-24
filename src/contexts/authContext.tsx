@@ -1,5 +1,6 @@
 import React, { createContext, ReactNode, useContext, useState} from "react";
 import api from "../network/api";
+import { useCookies } from "react-cookie";
 
 interface AuthContextType {
     accessToken: string | null;
@@ -11,10 +12,12 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [accessToken, setAccessToken] = useState<string | null>(null);
+    const [cookies, setCookie, removeCookie] = useCookies(['authToken']);
 
     const logout = () => {
         setAccessToken(null);
         api.putAccessToken(null)
+        removeCookie('authToken', { path: '/'})
     }
 
     return (
